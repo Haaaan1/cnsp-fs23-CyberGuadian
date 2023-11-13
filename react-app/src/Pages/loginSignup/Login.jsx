@@ -26,7 +26,7 @@ const Login = () => {
                     const data = response.data;
                     localStorage.setItem("UserData", JSON.stringify(data));
                     dispatch(userInfoFetched(response.data));
-
+                    
                     response.data.roles.forEach(e => {
                         if (e.authority === 'USER') {
                             cartItems(response.data.userId).then(res => {
@@ -35,7 +35,8 @@ const Login = () => {
                         }
                     })
                     console.log(response.data);
-                    history('/home')
+                    
+                    handle2FA(response.data);
                 }).catch((e) => {
                     dispatch(userInfoLost());
                     alert("You have to login first...")
@@ -85,6 +86,9 @@ const Login = () => {
         logOut();
     }, []);
 
+    const handle2FA = (userData) => {
+        history('/2fa');
+    }
     return (
         <div style={{ minHeight: "80vh" }} className='col-8 mx-auto'>
             <button className='btn btn-warning ms-3 my-3' onClick={signup} >Signup</button>
@@ -110,7 +114,7 @@ const Login = () => {
 
                 </div>
 
-            </form>
+            </form>  
         </div>
     );
 }

@@ -4,6 +4,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Pages/Homepage/Homepage"
 import Cart from "./Pages/Cart/Cart"
 import Login from "./Pages/loginSignup/Login";
+import Confirmation from "./Pages/loginSignup/Confirmation";
 import Footer from "./Components/Footer/Footer";
 import Admin from "./Pages/Admin/Admin";
 import About from "./Pages/About/About";
@@ -23,6 +24,7 @@ function App() {
             <Navbar />
             <Routes>
                 <Route exact path="/" element={<Login />} />
+                <Route exact path="/2fa" element={<Confirmation />} />
                 <Route exact path="/home" element={<Home />} />
                 <Route exact path="/cart" element={<Cart />} />
                 <Route exact path="/Admin" element={<Admin />} />
